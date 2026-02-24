@@ -54,7 +54,7 @@ export default function ServicesPage() {
                             HVAC Solutions You Can Depend On
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed">
-                            We offer a full spectrum of mechanical services, from minor repairs to whole-house system installations. Discover how we can optimize your home's climate.
+                            We offer a full spectrum of mechanical services, from minor repairs to whole-house system installations. Discover how we can optimize your home&apos;s climate.
                         </p>
                     </div>
                 </div>

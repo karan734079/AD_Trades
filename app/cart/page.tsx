@@ -18,7 +18,7 @@ export default function CartPage() {
                 <div className="space-y-2">
                     <h2 className="text-3xl font-extrabold tracking-tight">Your cart is empty</h2>
                     <p className="text-muted-foreground text-lg">
-                        Looking for HVAC services? Let's get your appointment scheduled with our experts.
+                        Looking for HVAC services? Let&apos;s get your appointment scheduled with our experts.
                     </p>
                 </div>
 

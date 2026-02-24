@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
                                 Why Choose AD Trades Mechanical?
                             </h2>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                When it comes to your home's comfort, you need a partner you can rely on. Our team is dedicated to providing high-quality workmanship and exceptional customer service on every job.
+                                When it comes to your home&apos;s comfort, you need a partner you can rely on. Our team is dedicated to providing high-quality workmanship and exceptional customer service on every job.
                             </p>
                         </div>
 

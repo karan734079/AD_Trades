@@ -47,7 +47,7 @@ export default function Testimonials() {
                         What Our Customers Say
                     </h2>
                     <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl font-medium">
-                        Don't just take our word for it. Read why homeowners trust us for all their HVAC needs.
+                        Don&apos;t just take our word for it. Read why homeowners trust us for all their HVAC needs.
                     </p>
                 </motion.div>
 
@@ -81,9 +81,9 @@ export default function Testimonials() {
                                 </div>
 
                                 <p className="text-white/90 italic mb-10 leading-relaxed text-lg flex-grow relative">
-                                    <span className="text-primary text-2xl absolute -left-4 -top-2">"</span>
+                                    <span className="text-primary text-2xl absolute -left-4 -top-2">&quot;</span>
                                     {review.text}
-                                    <span className="text-primary text-2xl absolute -bottom-4 ml-2">"</span>
+                                    <span className="text-primary text-2xl absolute -bottom-4 ml-2">&quot;</span>
                                 </p>
 
                                 <div className="flex items-center space-x-4 border-t border-white/10 pt-6">

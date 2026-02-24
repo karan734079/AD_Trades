@@ -37,7 +37,7 @@ export default function ContactForm() {
                 <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-card/95 backdrop-blur-sm">
                     <CheckCircle className="h-16 w-16 text-green-500 mb-4" />
                     <h3 className="text-2xl font-bold">Message Sent!</h3>
-                    <p className="text-muted-foreground mt-2">We'll get back to you shortly.</p>
+                    <p className="text-muted-foreground mt-2">We&apos;ll get back to you shortly.</p>
                 </div>
             )}
 

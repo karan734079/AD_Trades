@@ -38,7 +38,7 @@ export default function CTA() {
                         </h2>
 
                         <p className="mx-auto text-xl md:text-2xl text-muted-foreground/90 leading-relaxed font-medium">
-                            Don't wait for your system to fail. Get in touch with our experts today and experience the difference of <span className="text-primary font-bold underline decoration-accent underline-offset-4">premium</span> HVAC service.
+                            Don&apos;t wait for your system to fail. Get in touch with our experts today and experience the difference of <span className="text-primary font-bold underline decoration-accent underline-offset-4">premium</span> HVAC service.
                         </p>
                     </motion.div>
 
