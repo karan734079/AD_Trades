@@ -1,60 +1,73 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Zap } from "lucide-react"
+import { ArrowRight, Phone, Sparkles } from "lucide-react"
 import { Button } from "./ui/button"
 import { motion } from "framer-motion"
 
 export default function CTA() {
     return (
-        <section className="py-32 bg-background relative overflow-hidden">
-            <div className="absolute inset-0 z-0 bg-primary/5 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]" />
-
+        <section className="py-24 bg-background relative overflow-hidden">
             <div className="container relative z-10 px-4 md:px-6">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    className="flex flex-col items-center justify-center space-y-10 text-center bg-gradient-to-br from-card via-card to-primary/5 rounded-[3rem] p-16 lg:p-24 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.2)] border border-primary/20 relative overflow-hidden group"
+                    transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+                    className="flex flex-col lg:flex-row items-center justify-between space-y-12 lg:space-y-0 lg:space-x-12 bg-primary p-12 lg:p-16 rounded-[3rem] border border-primary-foreground/10 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.4)] relative overflow-hidden group"
                 >
-                    {/* Animated Background Highlights */}
-                    <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/20 transition-colors duration-1000" />
-                    <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 group-hover:bg-primary/20 transition-colors duration-1000" />
+                    {/* Animated modern particles */}
+                    <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
 
                     <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                        className="space-y-6 max-w-4xl relative z-10"
-                    >
-                        <div className="inline-flex items-center space-x-2 text-primary font-bold uppercase tracking-widest text-sm bg-primary/10 px-4 py-2 rounded-full border border-primary/20 shadow-inner">
-                            <Zap className="w-5 h-5 text-accent animate-pulse" />
-                            <span>Take Action Now</span>
-                        </div>
+                        animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute -top-32 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-[80px] pointer-events-none group-hover:bg-accent/30 transition-colors duration-700"
+                    />
+                    <motion.div
+                        animate={{ scale: [1, 1.5, 1], rotate: [0, -90, 0] }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        className="absolute -bottom-32 -left-32 w-96 h-96 bg-white/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-white/20 transition-colors duration-700"
+                    />
 
-                        <h2 className="text-5xl font-black tracking-tight sm:text-6xl md:text-7xl text-foreground drop-shadow-sm">
-                            Ready for Unmatched Comfort?
+                    <div className="space-y-6 max-w-2xl text-center lg:text-left relative z-10">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full border border-white/20 text-white backdrop-blur-md mb-2"
+                        >
+                            <Sparkles className="w-5 h-5 text-accent animate-pulse" />
+                            <span className="text-sm font-bold tracking-wide uppercase">Upgrade Your Comfort</span>
+                        </motion.div>
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Ready for Your Home&apos;s Next Upgrade?
                         </h2>
-
-                        <p className="mx-auto text-xl md:text-2xl text-muted-foreground/90 leading-relaxed font-medium">
-                            Don&apos;t wait for your system to fail. Get in touch with our experts today and experience the difference of <span className="text-primary font-bold underline decoration-accent underline-offset-4">premium</span> HVAC service.
+                        <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-medium">
+                            Don&apos;t compromise on comfort. Trust the professional experts with over 15 years of industry-leading performance to service your home or business.
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                        className="w-full max-w-lg space-y-4 relative z-10"
-                    >
-                        <Link href="/appointment" className="w-full block">
-                            <Button size="lg" className="group w-full h-16 text-xl rounded-full shadow-[0_10px_30px_rgba(37,99,235,0.4)] hover:shadow-[0_20px_50px_rgba(37,99,235,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 bg-primary text-white">
-                                Get Your Free Quote
-                                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-                            </Button>
-                        </Link>
-                    </motion.div>
+                    <div className="w-full lg:w-auto flex flex-col sm:flex-row gap-4 flex-shrink-0 relative z-10">
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link href="/appointment" className="w-full sm:w-auto block">
+                                <Button size="lg" className="w-full sm:w-auto h-16 px-8 text-xl rounded-2xl bg-accent text-accent-foreground hover:bg-accent/90 shadow-xl hover:shadow-accent/40 transition-all border-b-4 border-accent-foreground/20 active:border-b-0 active:translate-y-1">
+                                    Get a Free Estimate
+                                    <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </Link>
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link href="tel:18008581922" className="w-full sm:w-auto block">
+                                <Button size="lg" variant="outline" className="w-full sm:w-auto h-16 px-8 text-xl rounded-2xl border-2 border-white/20 text-white hover:bg-white/10 backdrop-blur-md shadow-lg">
+                                    <Phone className="mr-2 h-6 w-6" />
+                                    1-800-858-1922
+                                </Button>
+                            </Link>
+                        </motion.div>
+                    </div>
+
                 </motion.div>
             </div>
         </section>

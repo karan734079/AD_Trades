@@ -1,115 +1,129 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Phone, Sparkles } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight, Phone, ShieldCheck } from "lucide-react"
 import { Button } from "./ui/button"
 import { motion } from "framer-motion"
 
 export default function Hero() {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-secondary">
-            {/* Animated Background Orbs */}
-            <motion.div
-                animate={{
-                    x: [0, 50, -50, 0],
-                    y: [0, -50, 50, 0],
-                    scale: [1, 1.2, 0.8, 1]
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 left-1/4 w-[30rem] h-[30rem] bg-primary/20 rounded-full mix-blend-screen filter blur-[120px]"
-            />
-            <motion.div
-                animate={{
-                    x: [0, -70, 40, 0],
-                    y: [0, 60, -40, 0],
-                    scale: [1, 0.9, 1.1, 1]
-                }}
-                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-20 right-1/4 w-[25rem] h-[25rem] bg-accent/20 rounded-full mix-blend-screen filter blur-[100px]"
-            />
-            <motion.div
-                animate={{
-                    x: [0, 40, -60, 0],
-                    y: [0, 40, -50, 0],
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute -bottom-32 left-1/3 w-[35rem] h-[35rem] bg-blue-600/20 rounded-full mix-blend-screen filter blur-[120px]"
-            />
+        <section className="relative bg-background pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+            {/* Subtle dot pattern background */}
+            <div className="absolute inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-50" />
 
-            {/* Background Image with Parallax-like slow zoom */}
-            <motion.div
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-[0.15] mix-blend-overlay"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=2069')" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/60 to-secondary z-10" />
-
-            <div className="container relative z-20 px-4 md:px-6 mt-16">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
-                    className="max-w-4xl mx-auto text-center space-y-8"
-                >
+            <div className="container relative z-10 px-4 md:px-6">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                     <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ type: "spring", bounce: 0.6, duration: 1, delay: 0.2 }}
-                        className="inline-flex items-center rounded-full border border-primary/50 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary/90 backdrop-blur-md shadow-[0_0_20px_rgba(37,99,235,0.2)]"
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="space-y-8 max-w-2xl"
                     >
-                        <Sparkles className="w-4 h-4 mr-2 text-primary" />
-                        Top Rated HVAC Services
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.5 }}
+                            className="inline-flex items-center space-x-2 text-primary font-bold uppercase tracking-widest text-sm"
+                        >
+                            <ShieldCheck className="w-5 h-5 text-accent" />
+                            <span>Top Rated HVAC Services</span>
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.7 }}
+                            className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]"
+                        >
+                            Innovative and Personalized HVAC Solutions.
+                        </motion.h1>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.7 }}
+                            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl font-medium"
+                        >
+                            Expert installation, repair, and maintenance for residential and commercial spaces. Trust the professionals at AD Trades Mechanical for comfort that lasts.
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.7 }}
+                            className="flex flex-col sm:flex-row gap-4 pt-4"
+                        >
+                            <Link href="/appointment">
+                                <Button size="lg" className="w-full sm:w-auto h-14 px-8 text-lg rounded-xl bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm hover:scale-105 transition-all w-full sm:w-auto block text-center">
+                                    Get Free Estimate
+                                    <ArrowRight className="ml-2 h-5 w-5 inline" />
+                                </Button>
+                            </Link>
+                            <Link href="tel:18008581922">
+                                <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-8 text-lg rounded-xl border-border text-foreground hover:bg-secondary hover:scale-105 transition-all w-full sm:w-auto block text-center">
+                                    <Phone className="mr-2 h-5 w-5 text-primary inline" />
+                                    1-800-858-1922
+                                </Button>
+                            </Link>
+                        </motion.div>
                     </motion.div>
 
-                    <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-2xl">
-                        <motion.span
-                            initial={{ y: 30, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.7, delay: 0.4, type: "spring", bounce: 0.4 }}
-                            className="block"
-                        >
-                            Premium Climate
-                        </motion.span>
-                        <motion.span
-                            initial={{ y: 30, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.7, delay: 0.6, type: "spring", bounce: 0.4 }}
-                            className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-accent mt-2 pb-2"
-                        >
-                            Control Solutions
-                        </motion.span>
-                    </h1>
-
-                    <motion.p
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.7, delay: 0.8 }}
-                        className="mx-auto max-w-[42rem] leading-relaxed text-muted-foreground/90 sm:text-xl sm:leading-8 font-medium"
-                    >
-                        Expert installation, repair, and maintenance for residential and commercial spaces. Trust the professionals at AD Trades Mechanical for comfort that lasts.
-                    </motion.p>
-
                     <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 1.0 }}
-                        className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
+                        initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.4 }}
+                        className="relative mx-auto w-full max-w-[600px] lg:max-w-none lg:pl-10 mix-blend-normal group"
                     >
-                        <Link href="/appointment">
-                            <Button size="lg" className="group w-full sm:w-auto h-14 px-8 text-lg rounded-full shadow-[0_0_40px_rgba(37,99,235,0.3)] hover:shadow-[0_0_60px_rgba(37,99,235,0.5)] transition-all duration-300">
-                                Get Free Quote
-                                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                            </Button>
-                        </Link>
-                        <Link href="tel:2262606697">
-                            <Button size="lg" variant="outline" className="group w-full sm:w-auto h-14 px-8 text-lg rounded-full bg-white/5 text-white border-white/20 hover:bg-white/10 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95">
-                                Call Now
-                                <Phone className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                            </Button>
-                        </Link>
+                        {/* Decorative background shape */}
+                        <motion.div
+                            animate={{ rotate: [2, -2, 2] }}
+                            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -z-10 top-0 -right-4 bottom-0 -left-4 bg-secondary rounded-[2.5rem]"
+                        />
+
+                        <div className="relative aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-2xl border border-border">
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full h-full"
+                            >
+                                <Image
+                                    src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=2069"
+                                    alt="HVAC Professional at work"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* Floating Trust Badge */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1, type: "spring", bounce: 0.5 }}
+                            whileHover={{ y: -5, scale: 1.02 }}
+                            className="absolute -bottom-6 -left-6 bg-background rounded-xl p-6 shadow-2xl border border-border max-w-[240px]"
+                        >
+                            <div className="flex items-center space-x-1 mb-2">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <motion.svg
+                                        key={star}
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 1 + (star * 0.1) }}
+                                        className="w-5 h-5 text-accent fill-current"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </motion.svg>
+                                ))}
+                            </div>
+                            <p className="text-sm font-bold text-foreground">5.0 (243 reviews)</p>
+                            <p className="text-xs text-muted-foreground mt-1">Trusted by homeowners nationwide.</p>
+                        </motion.div>
                     </motion.div>
-                </motion.div>
+                </div>
             </div>
         </section>
     )
