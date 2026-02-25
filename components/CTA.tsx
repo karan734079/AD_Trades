@@ -60,7 +60,7 @@ export default function CTA() {
                         </motion.div>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link href="tel:18008581922" className="w-full sm:w-auto block">
-                                <Button size="lg" variant="outline" className="w-full sm:w-auto h-16 px-8 text-xl rounded-2xl border-2 border-white/20 text-white hover:bg-white/10 backdrop-blur-md shadow-lg">
+                                <Button size="lg" className="w-full sm:w-auto h-16 px-8 text-xl rounded-2xl border-2 border-white/20 text-white bg-transparent hover:bg-white/10 backdrop-blur-md shadow-lg">
                                     <Phone className="mr-2 h-6 w-6" />
                                     1-800-858-1922
                                 </Button>

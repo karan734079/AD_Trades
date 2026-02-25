@@ -1,15 +1,13 @@
-import { Wind, ThermometerSnowflake, Wrench, RefreshCw, ShieldCheck, AlertTriangle } from "lucide-react"
+"use client"
 
-export const metadata = {
-    title: "Services | AD Trades Mechanical",
-    description: "Furnace installation, AC repair, heat pumps, and emergency HVAC services.",
-}
+import { Wind, ThermometerSnowflake, Wrench, RefreshCw, ShieldCheck, AlertTriangle } from "lucide-react"
+import { motion } from "framer-motion"
 
 const detailedServices = [
     {
         icon: Wind,
         title: "Furnace Installation & Replacement",
-        description: "Keep your home warm during the coldest months with our high-efficiency heating systems. We assess your home's unique heating requirements and install premium furnaces from leading brands to ensure lasting comfort and lower energy bills.",
+        description: "Keep your home warm during the coldest months with our high-efficiency heating systems. We assess your home's unique heating requirements and install premium furnaces from leading brands.",
         features: ["Energy Audit", "High-Efficiency Models", "Professional Installation", "Post-Install Inspection"]
     },
     {
@@ -44,46 +42,82 @@ const detailedServices = [
     }
 ]
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+}
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
+}
+
 export default function ServicesPage() {
     return (
         <div className="bg-background min-h-screen">
-            <div className="bg-secondary text-secondary-foreground py-24 border-b border-border/10">
-                <div className="container px-4 md:px-6">
-                    <div className="max-w-3xl space-y-6">
-                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white">
+            <div className="bg-[#0B1528] text-white py-32 border-b border-white/5 relative overflow-hidden">
+                {/* Background glow */}
+                <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
+                <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
+
+                <div className="container px-4 md:px-6 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="max-w-4xl mx-auto space-y-8"
+                    >
+                        <h1 className="text-5xl font-black tracking-tight sm:text-6xl md:text-7xl">
                             HVAC Solutions You Can Depend On
                         </h1>
-                        <p className="text-xl text-muted-foreground leading-relaxed">
+                        <p className="text-2xl text-slate-300 leading-relaxed font-light">
                             We offer a full spectrum of mechanical services, from minor repairs to whole-house system installations. Discover how we can optimize your home&apos;s climate.
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
 
             <div className="container px-4 md:px-6 py-24">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-12"
+                >
                     {detailedServices.map((service, i) => (
-                        <div key={i} className="flex flex-col md:flex-row gap-6 p-8 bg-card rounded-3xl shadow-sm border border-border hover:shadow-xl transition-all">
-                            <div className="shrink-0 h-16 w-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-                                <service.icon className="h-8 w-8" />
+                        <motion.div
+                            variants={itemVariants}
+                            whileHover={{ y: -10 }}
+                            key={i}
+                            className="flex flex-col xl:flex-row gap-8 p-10 bg-card rounded-[2.5rem] shadow-lg border border-border hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 overflow-hidden relative group"
+                        >
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-700" />
+                            <div className="shrink-0 h-20 w-20 bg-primary/10 rounded-[1.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <service.icon className="h-10 w-10 group-hover:scale-110 transition-transform" />
                             </div>
-                            <div className="space-y-4">
-                                <h3 className="text-2xl font-bold">{service.title}</h3>
-                                <p className="text-muted-foreground leading-relaxed">
+                            <div className="space-y-5 flex-1">
+                                <h3 className="text-3xl font-bold">{service.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed text-lg">
                                     {service.description}
                                 </p>
-                                <ul className="grid grid-cols-2 gap-2 pt-4 border-t border-border/50">
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6 border-t border-border/50">
                                     {service.features.map((feature, j) => (
-                                        <li key={j} className="flex items-center text-sm font-medium">
-                                            <div className="h-2 w-2 bg-primary rounded-full mr-2" />
+                                        <li key={j} className="flex items-center text-base font-semibold text-foreground">
+                                            <div className="h-2 w-2 bg-accent rounded-full mr-3" />
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </div>
     )

@@ -65,8 +65,8 @@ export default function WhyChooseUs() {
                         >
                             <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=2070"
-                                    alt="HVAC Technician working on unit"
+                                    src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=2069"
+                                    alt="Professional HVAC Servicing"
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-1000"
                                 />
