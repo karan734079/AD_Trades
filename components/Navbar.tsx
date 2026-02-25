@@ -34,7 +34,10 @@ export default function Navbar() {
                 initial={{ y: -80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "bg-[#040d1b]/98 backdrop-blur-2xl border-b border-white/8 shadow-[0_4px_40px_rgba(0,0,0,0.5)]" : "bg-[#040d1b]/85 backdrop-blur-xl border-b border-white/5"}`}
+                className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled
+                        ? "bg-[#040d1b] border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+                        : "bg-[#040d1b] border-b border-white/5"
+                    }`}
             >
                 <nav className="container mx-auto px-4 md:px-6">
                     <div className="flex items-center justify-between h-20">
