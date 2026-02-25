@@ -46,6 +46,12 @@ export default function Hero() {
     const mouseY = useMotionValue(0)
     const sectionRef = useRef<HTMLElement>(null)
 
+    // Cursor spotlight position (raw, from top-left of section)
+    const cursorX = useMotionValue(-500)
+    const cursorY = useMotionValue(-500)
+    const smoothCursorX = useSpring(cursorX, { stiffness: 80, damping: 20 })
+    const smoothCursorY = useSpring(cursorY, { stiffness: 80, damping: 20 })
+
     // Smooth spring-based parallax
     const springX = useSpring(mouseX, { stiffness: 40, damping: 25 })
     const springY = useSpring(mouseY, { stiffness: 40, damping: 25 })
@@ -65,15 +71,22 @@ export default function Hero() {
     const handleMouseMove = (e: React.MouseEvent) => {
         const rect = sectionRef.current?.getBoundingClientRect()
         if (!rect) return
+        // For parallax (relative to center)
         const cx = rect.left + rect.width / 2
         const cy = rect.top + rect.height / 2
         mouseX.set(e.clientX - cx)
         mouseY.set(e.clientY - cy)
+        // For spotlight (relative to top-left of section)
+        cursorX.set(e.clientX - rect.left)
+        cursorY.set(e.clientY - rect.top)
     }
 
     const handleMouseLeave = () => {
         mouseX.set(0)
         mouseY.set(0)
+        // Fade out spotlight by moving off-screen
+        cursorX.set(-500)
+        cursorY.set(-500)
     }
 
     return (
@@ -85,6 +98,21 @@ export default function Hero() {
         >
             {/* ── Static grid ── */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)]" />
+
+            {/* ── Yellow cursor spotlight ── */}
+            <motion.div
+                className="pointer-events-none absolute z-0 rounded-full mix-blend-screen"
+                style={{
+                    width: 700,
+                    height: 700,
+                    x: smoothCursorX,
+                    y: smoothCursorY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                    background: "radial-gradient(circle, rgba(250,204,21,0.18) 0%, rgba(250,204,21,0.07) 35%, transparent 70%)",
+                    willChange: "transform",
+                }}
+            />
 
             {/* ── Parallax ambient glows ── */}
             <motion.div
