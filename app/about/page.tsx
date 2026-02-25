@@ -43,7 +43,7 @@ export default function AboutPage() {
                             Founded on the principles of honesty, integrity, and superior craftsmanship, AD Trades Mechanical has been delivering premium HVAC solutions to residential and commercial clients for over 15 years.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            We understand that a functioning HVAC system is vital to your comfort and health. That's why we continually invest in training our technicians on the latest technologies and industry best practices.
+                            We understand that a functioning HVAC system is vital to your comfort and health. That&apos;s why we continually invest in training our technicians on the latest technologies and industry best practices.
                         </p>
                     </motion.div>
 
